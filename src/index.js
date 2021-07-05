@@ -3,6 +3,7 @@ import './style.css';
 import img from "./icon1.png";
 import Data from './data.xml';
 import Notes from './data.csv';
+import printMe from "./print";
 
 function component() {
     const element = document.createElement('div');
@@ -23,6 +24,8 @@ function component() {
   }
   
   document.body.appendChild(component());
+
+  printMe();
 
 
   //https://webpack.docschina.org/guides/asset-management/

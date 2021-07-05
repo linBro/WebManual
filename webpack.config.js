@@ -1,9 +1,25 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  mode: 'development',
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: './dist',
+  },
+  publicPath: '/',
+  entry: {
+    index: './src/index.js',
+    print: './src/print.js',
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: '管理输出',
+      template: 'index.html'
+    }),
+  ],
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
@@ -28,27 +44,7 @@ module.exports = {
         test: /\.xml$/i,
         use: ['xml-loader'],
       },
-      {
-        test: /\.toml$/i,
-        type: 'json',
-        parser: {
-          parse: toml.parse,
-        },
-      },
-      {
-        test: /\.yaml$/i,
-        type: 'json',
-        parser: {
-          parse: yaml.parse,
-        },
-      },
-      {
-        test: /\.json5$/i,
-        type: 'json',
-        parser: {
-          parse: json5.parse,
-        },
-      },
+
     ],
   },
  };
