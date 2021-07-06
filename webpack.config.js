@@ -10,7 +10,6 @@ module.exports = {
   publicPath: '/',
   entry: {
     index: './src/index.js',
-    print: './src/print.js',
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -19,7 +18,7 @@ module.exports = {
     }),
   ],
   output: {
-    filename: '[name].bundle.js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
